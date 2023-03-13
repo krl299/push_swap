@@ -6,7 +6,7 @@
 /*   By: cmoran-l <cmoran-l@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 11:27:52 by cmoran-l          #+#    #+#             */
-/*   Updated: 2023/03/13 15:37:45 by cmoran-l         ###   ########.fr       */
+/*   Updated: 2023/03/13 15:51:27 by cmoran-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	ft_dupes(unsigned int nb)
 // Case of a error
 void	ft_arg_error(t_stack **stack)
 {
-	ft_clearlst(stack);
+	ft_clearstack(stack);
 	write(2, "Error\n", 6);
 	exit(0);
 }
