@@ -6,7 +6,7 @@
 /*   By: cmoran-l <cmoran-l@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 16:02:38 by cmoran-l          #+#    #+#             */
-/*   Updated: 2023/03/10 17:08:14 by cmoran-l         ###   ########.fr       */
+/*   Updated: 2023/03/13 15:39:49 by cmoran-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	main(int argc, char *argv[])
 {
-	t_stack *stack_a;
-	t_stack *stack_b;
+	t_stack	*stack_a;
+	t_stack	*stack_b;
 
 	stack_a = NULL;
 	stack_b = NULL;
@@ -23,10 +23,8 @@ int	main(int argc, char *argv[])
 		return (0);
 	else
 	{
-		if (ft_check_arg(argv, &stack_a))
-		{
-
-		}
+		ft_check_arg(argv, &stack_a);
+		sort(&stack_a, &stack_b);
 	}
-	return(0);
+	return (0);
 }
