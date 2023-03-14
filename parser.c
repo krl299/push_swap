@@ -6,7 +6,7 @@
 /*   By: cmoran-l <cmoran-l@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 11:27:52 by cmoran-l          #+#    #+#             */
-/*   Updated: 2023/03/13 15:51:27 by cmoran-l         ###   ########.fr       */
+/*   Updated: 2023/03/14 11:52:51 by cmoran-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_isnum(char *str)
 	int	i;
 
 	i = -1;
-	if (str[0] == '-' || str[0] == '+' && str[1])
+	if (str[0] == '-' || (str[0] == '+' && str[1]))
 		i++;
 	while (str[++i])
 		if (!ft_isdigit(str[i]))
@@ -66,6 +66,5 @@ void	ft_check_arg(char **arg, t_stack **stack_a)
 			free(*str);
 			str++;
 		}
-		free(str);
 	}
 }

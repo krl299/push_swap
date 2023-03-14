@@ -6,17 +6,78 @@
 /*   By: cmoran-l <cmoran-l@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 18:03:15 by cmoran-l          #+#    #+#             */
-/*   Updated: 2023/03/13 18:10:31 by cmoran-l         ###   ########.fr       */
+/*   Updated: 2023/03/14 18:02:25 by cmoran-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-//
-void	ft_sort(t_stack **stack_a, t_stack **stack_b)
+// Create a new node to stack
+t_stack	*ft_stack_newnode(int value)
 {
-	t_stack	*temp;
-	int		size;
+	t_stack	*new;
 
-	size = ft_stack_size(*stack_a);
+	new = malloc(sizeof(t_stack));
+	if (!new)
+		return (NULL);
+	new->value = value;
+	new->index = 0;
+	new->next = NULL;
+	return (new);
+}
+
+// Clear a given stack
+void	ft_clearstack(t_stack **stack)
+{
+	t_stack	*tmp;
+
+	if (!stack || !(*stack))
+		return ;
+	while (*stack)
+	{
+		tmp = (*stack)->next;
+		free(*stack);
+		*stack = tmp;
+	}
+	*stack = NULL;
+}
+
+// Add one at the end of stack
+void	ft_stack_addback(t_stack *node, t_stack **stack)
+{
+	t_stack	*last;
+
+	if (!node)
+		return ;
+	if (!*stack)
+	{
+		*stack = node;
+		return ;
+	}
+	last = ft_get_last(*stack);
+	last->next = node;
+}
+
+// Return the size of a given stack
+int	ft_stack_size(t_stack *stack)
+{
+	int	size;
+
+	size = 0;
+	if (!stack)
+		return (0);
+	while (stack)
+	{
+		stack = stack->next;
+		size++;
+	}
+	return (size);
+}
+
+// Return pointer to the last stack node
+t_stack	*ft_get_last(t_stack *stack)
+{
+	while (stack && stack->next != NULL)
+		stack = stack->next;
+	return (stack);
 }

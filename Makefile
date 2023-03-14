@@ -1,4 +1,4 @@
-SRCS =	*.c
+SRCS =	push_swap.c	parser.c	stacks.c	sort.c
 
 OBJS = 		${SRCS:.c=.o}
 
