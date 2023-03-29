@@ -19,6 +19,8 @@ GCC = gcc -Wall -Werror -Wextra
 all:		$(NAME)
 
 $(NAME):	${OBJS}
+		@git submodule init
+		@git submodule update
 		@make -C libft extra
 		@${GCC} ${OBJS} ${LIBFT} -o push_swap 
 
