@@ -6,13 +6,12 @@
 /*   By: cmoran-l <cmoran-l@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 11:27:52 by cmoran-l          #+#    #+#             */
-/*   Updated: 2023/03/24 11:58:03 by cmoran-l         ###   ########.fr       */
+/*   Updated: 2023/03/30 13:53:59 by cmoran-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// Check if the given string is a number
 int	ft_isnum(char *str)
 {
 	int	i;
@@ -38,12 +37,39 @@ int	ft_dupes(unsigned int nb)
 	return (1);
 }
 
-// Case of a error
-void	ft_arg_error(t_stack **stack)
+//
+static long long	ft_atoll(const char *str)
 {
-	ft_clearstack(stack);
-	write(2, "Error\n", 6);
-	exit(0);
+	int			i;
+	int			sign;
+	long long	result;
+
+	sign = 1;
+	result = 0;
+	i = 0;
+	if (str[i] == '-' || str[i] == '+')
+	{
+		if (str[i] == '-')
+			sign *= -1;
+		i++;
+	}
+	while (ft_isdigit(str[i]) && str[i] != '\0')
+	{
+		result = result * 10 + str[i] - '0';
+		i++;
+	}
+	return (result * sign);
+}
+
+//
+static int	ft_is_int(char *str)
+{
+	long long	n;
+
+	n = ft_atoll(str);
+	if (n < INT_MIN || n > INT_MAX)
+		return (0);
+	return (1);
 }
 
 // Check that arg format is correct and add each int to the stack a
@@ -60,7 +86,7 @@ void	ft_check_arg(char **arg, t_stack **stack_a)
 			ft_arg_error(stack_a);
 		while (*str)
 		{
-			if (!ft_isnum(*str) || !ft_dupes(ft_atoi(*str)))
+			if (!ft_isnum(*str) || !ft_dupes(ft_atoi(*str)) || !ft_is_int(*str))
 				ft_arg_error(stack_a);
 			else
 				ft_stack_addback(ft_stack_newnode(ft_atoi(*str)), stack_a);

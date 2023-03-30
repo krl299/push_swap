@@ -16,12 +16,13 @@ RM = rm -rf
 
 GCC = gcc -Wall -Werror -Wextra
 
-all:		$(NAME)
+all:		$(LIBFT)	$(NAME)
+
+$(LIBFT):	
+		@git submodule update --init
+		@make -C libft extra
 
 $(NAME):	${OBJS}
-		@git submodule init
-		@git submodule update
-		@make -C libft extra
 		@${GCC} ${OBJS} ${LIBFT} -o push_swap 
 
 clean:		

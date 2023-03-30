@@ -6,7 +6,7 @@
 /*   By: cmoran-l <cmoran-l@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 16:02:38 by cmoran-l          #+#    #+#             */
-/*   Updated: 2023/03/24 11:57:11 by cmoran-l         ###   ########.fr       */
+/*   Updated: 2023/03/30 13:51:00 by cmoran-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,9 @@ int	main(int argc, char *argv[])
 		ft_check_arg(argv, &stack_a);
 		ft_sort(&stack_a, &stack_b);
 	}
+	ft_clearstack(&stack_a);
+	system("leaks -q push_swap");
 	return (0);
 }
+
+

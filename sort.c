@@ -6,7 +6,7 @@
 /*   By: cmoran-l <cmoran-l@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 11:26:21 by cmoran-l          #+#    #+#             */
-/*   Updated: 2023/03/24 11:59:08 by cmoran-l         ###   ########.fr       */
+/*   Updated: 2023/03/30 13:20:27 by cmoran-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,21 @@ void	ft_sort(t_stack **stack_a, t_stack **stack_b)
 
 	size = ft_stack_size(*stack_a);
 	ft_assing_index(*stack_a, size);
-	ft_leave_three(stack_a, stack_b);
-	ft_sort_three(stack_a);
-	while (*stack_b)
-	{
-		ft_set_target_place(stack_a, stack_b);
-		ft_set_cost(stack_a, stack_b);
-		ft_do_cheap(stack_a, stack_b);
-	}
 	if (!ft_is_sorted(*stack_a))
-		ft_shift_stack(stack_a);
+	{
+		if (ft_stack_size(*stack_a) == 2)
+			ft_do_sa(*stack_a);
+		ft_leave_three(stack_a, stack_b);
+		ft_sort_three(stack_a);
+		while (*stack_b)
+		{
+			ft_set_target_place(stack_a, stack_b);
+			ft_set_cost(stack_a, stack_b);
+			ft_do_cheap(stack_a, stack_b);
+		}
+		if (!ft_is_sorted(*stack_a))
+			ft_shift_stack(stack_a);
+	}
 }
 
 // Bubble sort to assing index each stack node
