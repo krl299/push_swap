@@ -6,7 +6,7 @@
 /*   By: cmoran-l <cmoran-l@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 11:27:52 by cmoran-l          #+#    #+#             */
-/*   Updated: 2023/03/30 13:53:59 by cmoran-l         ###   ########.fr       */
+/*   Updated: 2023/03/31 14:55:25 by cmoran-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,22 +76,25 @@ static int	ft_is_int(char *str)
 void	ft_check_arg(char **arg, t_stack **stack_a)
 {
 	int		i;
+	int		j;
 	char	**str;
 
 	i = 0;
 	while (arg[++i])
 	{
+		j = 0;
 		str = ft_split(arg[i], ' ');
 		if (!*str)
-			ft_arg_error(stack_a);
-		while (*str)
+			ft_arg_error(stack_a, str);
+		while (str[j])
 		{
-			if (!ft_isnum(*str) || !ft_dupes(ft_atoi(*str)) || !ft_is_int(*str))
-				ft_arg_error(stack_a);
+			if (!ft_isnum(str[j]) || !ft_dupes(ft_atoi(str[j])) || !ft_is_int(str[j]))
+				ft_arg_error(stack_a, str);
 			else
-				ft_stack_addback(ft_stack_newnode(ft_atoi(*str)), stack_a);
-			free(*str);
-			str++;
+				ft_stack_addback(ft_stack_newnode(ft_atoi(str[j])), stack_a);
+			free(str[j]);
+			j++;
 		}
+		free(str);
 	}
 }

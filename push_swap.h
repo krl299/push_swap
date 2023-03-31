@@ -6,7 +6,7 @@
 /*   By: cmoran-l <cmoran-l@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 16:03:41 by cmoran-l          #+#    #+#             */
-/*   Updated: 2023/03/24 11:25:48 by cmoran-l         ###   ########.fr       */
+/*   Updated: 2023/03/31 14:48:47 by cmoran-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ typedef struct s_stack{
 
 // Funtions to check arguments
 void	ft_check_arg(char **argv, t_stack **stack_a);
-void	ft_arg_error(t_stack **stack);
+void	ft_arg_error(t_stack **stack, char **str);
 int		ft_isnum(char *str);
 int		ft_dupes(unsigned int nb);
 
